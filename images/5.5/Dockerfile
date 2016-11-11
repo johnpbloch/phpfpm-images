@@ -7,7 +7,7 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
         docker-php-ext-enable xdebug \
     ;fi
 
-RUN apt-get update && apt-get install -y libz-dev libmemcached-dev libjpeg-dev libpng-dev \
+RUN apt-get update && apt-get install -y libz-dev libmemcached-dev libjpeg-dev libpng-dev mysql-client \
     && pecl install memcached \
     && docker-php-ext-enable memcached \
     && docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli gd \

@@ -6,6 +6,7 @@ RUN apt-get update \
         libpng-dev \
         libz-dev \
         less \
+        mysql-client \
     && docker-php-ext-install -j$(nproc) \
         gd \
         mysqli \
