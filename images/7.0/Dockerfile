@@ -2,15 +2,17 @@ FROM php:7.0-fpm
 
 RUN apt-get update \
     && apt-get install -y \
-        libjpeg-dev \
-        libpng-dev \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng12-dev \
         libz-dev \
         less \
         mysql-client \
     && docker-php-ext-install -j$(nproc) \
-        gd \
         mysqli \
         zip \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd \
     && pecl install xdebug \
     && docker-php-ext-enable gd mysqli zip xdebug \
     && apt-get remove -y build-essential libz-dev \
