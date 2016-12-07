@@ -5,7 +5,7 @@ do
   docker build --pull -t "johnpbloch/phpfpm:$version" "images/$version"
 done
 
-docker tag johnpbloch/phpfpm:7.0 johnpbloch/phpfpm:latest
+docker tag johnpbloch/phpfpm:7.1 johnpbloch/phpfpm:latest
 
 docker push johnpbloch/phpfpm
 
