@@ -35,7 +35,7 @@ RUN apt-get update && apt-get -y install libmemcached11 libmemcachedutil2 libmem
     && apt-get autoremove -y \
     && apt-get clean
 
-RUN curl https://getcomposer.org/download/1.2.2/composer.phar > composer.phar \
+RUN curl https://getcomposer.org/download/1.3.2/composer.phar > composer.phar \
     && chmod +x composer.phar \
     && mv composer.phar /usr/local/bin/composer \
     && curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > wp-cli.phar \

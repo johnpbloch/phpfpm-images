@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y libz-dev libmemcached-dev libfreetype6-
 RUN docker-php-ext-install zip \
     && docker-php-ext-enable zip
 
-RUN curl https://getcomposer.org/download/1.2.2/composer.phar > /tmp/composer.phar \
+RUN curl https://getcomposer.org/download/1.3.2/composer.phar > /tmp/composer.phar \
     && chmod +x /tmp/composer.phar \
     && mv /tmp/composer.phar /usr/local/bin/composer \
     && apt-get update && apt-get install -y less \
