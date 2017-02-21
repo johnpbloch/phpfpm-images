@@ -8,30 +8,18 @@ RUN apt-get update \
         libz-dev \
         less \
         mysql-client \
+        libmemcached11 \
+        libmemcachedutil2 \
+        libmemcached-dev \
     && docker-php-ext-install -j$(nproc) \
         mysqli \
         zip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install xdebug \
-    && docker-php-ext-enable gd mysqli zip xdebug \
-    && apt-get remove -y build-essential libz-dev \
-    && apt-get autoremove -y \
-    && apt-get clean
-
-RUN apt-get update && apt-get -y install libmemcached11 libmemcachedutil2 libmemcached-dev git \
-    && mkdir -p /opt/memcached \
-    && cd /opt/memcached \
-    && git clone --branch php7 https://github.com/php-memcached-dev/php-memcached \
-    && cd php-memcached \
-    && phpize \
-    && ./configure \
-    && make \
-    && mv /opt/memcached/php-memcached/modules/memcached.so /opt/memcached/memcached.so \
-    && cd /opt/memcached \
-    && rm -r php-memcached \
-    && echo "extension=/opt/memcached/memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
-    && apt-get remove -y build-essential libmemcached-dev libz-dev git \
+    && pecl install memcached \
+    && docker-php-ext-enable xdebug memcached \
+    && apt-get remove -y build-essential libz-dev libmemcached-dev \
     && apt-get autoremove -y \
     && apt-get clean
 
