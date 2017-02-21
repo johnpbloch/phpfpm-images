@@ -12,11 +12,8 @@ RUN apt-get update && apt-get install -y libz-dev libmemcached-dev libfreetype6-
     && docker-php-ext-enable memcached \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli \
-    && docker-php-ext-enable pdo pdo_mysql mysqli gd
-
-RUN docker-php-ext-install zip \
-    && docker-php-ext-enable zip
+    && docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli zip \
+    && docker-php-ext-enable pdo pdo_mysql mysqli gd zip
 
 RUN curl https://getcomposer.org/download/$(curl -LSs https://api.github.com/repos/composer/composer/releases/latest | grep 'tag_name' | sed -e 's/.*: "//;s/".*//')/composer.phar > /tmp/composer.phar \
     && chmod +x /tmp/composer.phar \
