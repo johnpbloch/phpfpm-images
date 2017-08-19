@@ -1,12 +1,15 @@
 FROM php:7.1-fpm
 
 RUN apt-get update \
+    && echo "postfix postfix/mailname string example.com" | debconf-set-selections \
+    && echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections \
     && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng12-dev \
         libz-dev \
         less \
+        postfix \
         mysql-client \
         libmemcached11 \
         libmemcachedutil2 \
