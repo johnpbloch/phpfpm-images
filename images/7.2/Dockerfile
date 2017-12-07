@@ -25,8 +25,9 @@ RUN apt-get update \
        --with-png-dir=/usr --with-webp-dir=/usr \
     && docker-php-ext-configure zip --with-libzip=/usr \
     && docker-php-ext-install -j$(nproc) gd zip \
+    && pecl install xdebug-beta \
     && pecl install memcached \
-    && docker-php-ext-enable memcached \
+    && docker-php-ext-enable xdebug memcached \
     && apt-get remove -y build-essential libz-dev libmemcached-dev \
     && apt-get autoremove -y \
     && apt-get clean
