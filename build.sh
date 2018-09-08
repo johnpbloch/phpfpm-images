@@ -4,9 +4,10 @@ children=""
 for version in $(ls -1 images)
 do
   tmpFile=$(mktemp --tmpdir=. "php$version.XXX.log")
-  echo "Building $version (output in $tmpFile)..."
   docker build --pull --no-cache -t "johnpbloch/phpfpm:$version" "images/$version" > $tmpFile 2>&1 &
-  children+=" $version:$!"
+  pid="$!"
+  echo "Building $version (PID $pid, output in $tmpFile)..."
+  children+=" $version:$pid"
 done
 
 exitcode=0
