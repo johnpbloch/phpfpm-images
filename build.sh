@@ -31,5 +31,6 @@ fi
 
 docker tag johnpbloch/phpfpm:7.2 johnpbloch/phpfpm:latest
 
-docker push johnpbloch/phpfpm
+echo "Pushing images..."
+docker push johnpbloch/phpfpm > /dev/null 2>&1
 
