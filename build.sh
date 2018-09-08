@@ -19,7 +19,7 @@ do
 		rm "php$ver.*.log"
 	else
 		errorMsg+=" $ver"
-		(($exitcode+=1))
+		exitcode=$(($exitcode+1))
 	fi
 done
 
