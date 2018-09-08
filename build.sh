@@ -17,7 +17,7 @@ do
 	pid=${versions##*:}
 	ver=${versions%%:*}
 	if wait $pid ; then
-		rm "php$ver.*.log"
+		rm php$ver.*.log
 	else
 		errorMsg+=" $ver"
 		exitcode=$(($exitcode+1))
