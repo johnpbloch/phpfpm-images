@@ -16,7 +16,6 @@ RUN apt-get update \
         libmemcached-dev \
     && docker-php-ext-install -j$(nproc) \
         mysqli \
-        pdo \
         pdo_mysql \
         sockets \
         zip \
