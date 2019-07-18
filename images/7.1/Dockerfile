@@ -1,4 +1,5 @@
-FROM php:7.1-fpm
+# -stretch added to work around this issue with freetype: https://github.com/docker-library/php/issues/865
+FROM php:7.1-fpm-stretch
 
 RUN apt-get update \
     && echo "postfix postfix/mailname string example.com" | debconf-set-selections \
