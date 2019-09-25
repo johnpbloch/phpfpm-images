@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 children=""
 for version in $(ls -1 images)
@@ -7,7 +7,7 @@ do
   docker build --pull --no-cache -t "johnpbloch/phpfpm:$version" "images/$version" > $tmpFile 2>&1 &
   pid="$!"
   echo "Building $version (PID $pid, output in $tmpFile)..."
-  children+=" $version:$pid"
+  children="$children $version:$pid"
 done
 
 exitcode=0
