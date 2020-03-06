@@ -1,9 +1,8 @@
 # -stretch added to work around this issue with freetype: https://github.com/docker-library/php/issues/865
 FROM php:7.4-fpm
 
-RUN set -eux
-
-RUN apt-get update \
+RUN set -eux \
+    && apt-get update \
     && echo "postfix postfix/mailname string example.com" | debconf-set-selections \
     && echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections \
     && apt-get install -y \
