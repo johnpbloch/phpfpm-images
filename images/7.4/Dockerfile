@@ -29,9 +29,8 @@ RUN set -eux \
     && docker-php-ext-enable xdebug memcached \
     && apt-get remove -y build-essential libz-dev libmemcached-dev \
     && apt-get autoremove -y \
-    && apt-get clean
-
-RUN curl https://getcomposer.org/download/$(curl -LSs https://api.github.com/repos/composer/composer/releases/latest | grep 'tag_name' | sed -e 's/.*: "//;s/".*//')/composer.phar > composer.phar \
+    && apt-get clean \
+    && curl https://getcomposer.org/download/$(curl -LSs https://api.github.com/repos/composer/composer/releases/latest | grep 'tag_name' | sed -e 's/.*: "//;s/".*//')/composer.phar > composer.phar \
     && chmod +x composer.phar \
     && mv composer.phar /usr/local/bin/composer \
     && curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > wp-cli.phar \
