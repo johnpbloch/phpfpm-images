@@ -29,7 +29,7 @@ if (( $exitcode > 0 )); then
 	exit $exitcode
 fi
 
-docker tag johnpbloch/phpfpm:8.0 johnpbloch/phpfpm:latest
+docker tag johnpbloch/phpfpm:8.1 johnpbloch/phpfpm:latest
 
 echo "Pushing images..."
 for version in $(ls -1 images)
