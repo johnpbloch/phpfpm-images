@@ -1,5 +1,5 @@
 # -stretch added to work around this issue with freetype: https://github.com/docker-library/php/issues/865
-FROM php:7.3-fpm
+FROM php:8.1-fpm
 
 RUN set -eux \
     && apt-get update \
