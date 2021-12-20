@@ -30,7 +30,7 @@ RUN set -eux \
     && apt-get remove -y build-essential libz-dev libmemcached-dev \
     && apt-get autoremove -y \
     && apt-get clean \
-    && curl https://getcomposer.org/download/latest-2.x/composer.phar > composer.phar
+    && curl https://getcomposer.org/download/latest-2.x/composer.phar > composer.phar \
     && chmod +x composer.phar \
     && mv composer.phar /usr/local/bin/composer \
     && curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > wp-cli.phar \
