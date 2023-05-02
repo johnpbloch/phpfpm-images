@@ -24,7 +24,7 @@ RUN set -eux \
         zip \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install \
-        xdebug \
+        xdebug-3.1.6 \
         memcached \
     && docker-php-ext-enable xdebug memcached \
     && apt-get remove -y build-essential libz-dev libmemcached-dev \
