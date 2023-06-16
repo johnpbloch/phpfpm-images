@@ -1,5 +1,4 @@
-# -stretch added to work around this issue with freetype: https://github.com/docker-library/php/issues/865
-FROM php:8.2-fpm
+FROM php:8.2-fpm-bullseye
 
 RUN set -eux \
     && apt-get update \
@@ -17,12 +16,12 @@ RUN set -eux \
         libmemcachedutil2 \
         libmemcached-dev \
         libzip-dev \
-    && docker-php-ext-install -j$(nproc) \
+    && docker-php-ext-install \
         mysqli \
         pdo_mysql \
         sockets \
         zip \
-    && docker-php-ext-install -j$(nproc) gd \
+        gd \
     && pecl install \
         xdebug \
         memcached \
