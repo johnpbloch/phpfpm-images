@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-buster
+FROM php:8.0-fpm-bullseye
 
 RUN set -eux \
     && apt-get update \
